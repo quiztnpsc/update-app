@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Revision Quiz</title><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0f5a4d"><link rel="apple-touch-icon" href="icon-192.png"><style>
+:root{--bg:#f6f5f1;--card:#fff;--ink:#1d1d1f;--mute:#6b6b70;--line:#e2e0d8;--acc:#e5214e;--sel:#2563eb;--selbg:#e8f0fe;--ok:#1f8a4c;--okbg:#e6f5ec;--bad:#c62828;--badbg:#fdeaea;--shadow:0 1px 3px rgba(0,0,0,.08);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17171a;--card:#222226;--ink:#eee;--mute:#9a9aa2;--line:#35353b;--okbg:#17301f;--badbg:#3a1c1c;--selbg:#1b2a47;--sel:#7aa7ff;--ok:#5fd08a;--bad:#ff7b7b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17171a;--card:#222226;--ink:#eee;--mute:#9a9aa2;--line:#35353b;--okbg:#17301f;--badbg:#3a1c1c;--selbg:#1b2a47;--sel:#7aa7ff;--ok:#5fd08a;--bad:#ff7b7b;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.45}
+.wrap{max-width:820px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin:8px 0 2px}
+.sub{color:var(--mute);font-size:14px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);margin-bottom:14px}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--acc);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:600}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.4;cursor:default}
+.top{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--mute);margin-bottom:8px;gap:8px}
+.bar{height:6px;background:var(--line);border-radius:4px;overflow:hidden;margin-bottom:14px}
+.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .25s}
+.imgbox{background:#fff;border-radius:8px;overflow:hidden;line-height:0}
+.imgbox img{width:100%;height:auto;display:block}
+.opt{display:block;width:100%;text-align:left;background:var(--card);border:2px solid var(--line);border-radius:10px;padding:4px;margin-bottom:8px;color:var(--ink)}
+.opt:hover{border-color:var(--sel)}
+.opt.sel{border-color:var(--sel);background:var(--selbg)}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.opt.static{pointer-events:none;cursor:default}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:10px;flex-wrap:wrap}
+.big{font-size:44px;font-weight:700;margin:4px 0}
+.tag{display:inline-block;font-size:12px;background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:2px 10px;color:var(--mute)}
+.tag.ok{color:var(--ok);border-color:var(--ok)}.tag.bad{color:var(--bad);border-color:var(--bad)}
+.hide{display:none}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 14px}
+.stat{flex:1;min-width:90px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:13px;color:var(--mute)}
+.stat b{display:block;font-size:22px;color:var(--ink)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;padding:6px 14px;font-size:14px}
+.tabs button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:6px;margin-top:12px;max-height:220px;overflow:auto}
+.pal button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 0;font-size:12px}
+.pal button.a{background:var(--selbg);border-color:var(--sel)}
+.pal button.cur{outline:2px solid var(--acc)}
+.note{font-size:13px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin:6px 0}
+details summary{cursor:pointer;font-size:14px;color:var(--mute)}
+
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);white-space:nowrap}
+input[type=text],input[type=password]{width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:15px;margin:6px 0}
+.tbox{padding:12px 14px;font-size:16px;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+textarea{width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;margin:6px 0}
+.hbar{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}.hbar .btn{padding:8px 12px;font-size:14px}
+</style></head><body><div class="wrap">
+<div id="bar2" class="hbar hide"><span><b id="who"></b></span><span style="display:flex;gap:8px"><button class="btn ghost hide" id="admBtn">Admin</button><button class="btn ghost hide" id="updChk">Check for updates</button><button class="btn ghost" id="homeBtn">Tests</button><button class="btn ghost" id="lout">Log out</button></span></div>
+<div id="upd" class="card hide" style="border-color:var(--acc)"></div><h1>Revision Quiz</h1><div class="sub">English + தமிழ் exactly as in the PDFs · answers revealed after submit</div>
+<div id="login" class="card hide"><div class="tabs" style="margin-top:0"><button id="tStu" class="on">Student login</button><button id="tAdm">Admin login</button></div><div class="sub" id="lhelp" style="margin:4px 0">Student login. Your login is created by the admin.</div>
+<input type="text" id="lemail" placeholder="Email" autocomplete="email" inputmode="email"><input type="text" id="lotp" class="hide" placeholder="6-digit OTP" inputmode="numeric" maxlength="6"><input type="password" id="lpin" placeholder="Password (6+ characters)" autocomplete="current-password">
+<div id="lmsg" style="color:var(--bad);font-size:14px;min-height:20px"></div><div class="nav" style="margin-top:0"><button class="btn" id="lbtn">Login</button><button class="btn ghost hide" id="lswitch">Back to login</button><button class="btn ghost" id="lforgot">Forgot password?</button></div></div>
+<div id="home" class="hide"><div id="mods"></div><div class="card"><b>Change password</b><input type="password" id="cpOld" placeholder="Current password"><input type="password" id="cpNew" placeholder="New password (6+ characters)"><div id="cpMsg" class="sub" style="min-height:20px"></div><button class="btn ghost" id="cpBtn">Update password</button></div></div>
+<div id="play" class="hide"><div class="top"><span id="prog"></span><span id="ansct"></span></div><div class="bar"><i id="barfill"></i></div>
+<div class="card"><div class="tag" id="qsec"></div><div id="stembox" style="margin:10px 0 12px"></div><div id="opts"></div>
+<div class="nav"><button class="btn ghost" id="prev">← Previous</button><button class="btn ghost" id="clear">Clear answer</button><button class="btn" id="next">Next →</button></div>
+<details style="margin-top:14px"><summary>Question navigator</summary><div class="pal" id="pal"></div></details></div>
+<div id="cbox" class="card hide" style="border-color:var(--acc)"><div id="cmsg" style="margin-bottom:10px"></div><div class="nav" style="margin-top:0"><button class="btn ghost" id="cno">Cancel</button><button class="btn" id="cyes">Yes, submit</button></div></div>
+<div class="nav" style="margin-top:0"><button class="btn ghost" id="toHome">← All tests</button><button class="btn" id="submit">Submit &amp; reveal answers</button></div><span id="mtitle" class="hide"></span></div>
+<div id="result" class="hide"><div class="card"><div class="sub" id="rtitle" style="margin-bottom:0"></div><div class="big" id="big"></div><div class="sub" id="pct"></div><div class="stats" id="stats"></div><div class="sub" id="shareNote"></div>
+<div class="nav" style="margin-top:0"><button class="btn" id="again">Retake</button><button class="btn ghost" id="back">← Back to questions</button></div></div><div class="tabs" id="tabs"></div><div id="rev"></div><div class="nav"><span></span><button class="btn ghost hide" id="more">Show more</button></div></div>
+<div id="admin" class="hide"><div class="hbar"><b>Admin · student results</b><button class="btn ghost" id="admBack">← Back</button></div><div id="pwMsg" class="card hide" style="border-color:var(--ok)"></div>
+<div class="card"><b>➕ Create new user</b><div class="sub" style="margin:4px 0 8px">Only the admin can create users, and only you can see their details (name, mobile, email). Use an existing email to update that user.</div>
+<div class="row"><input type="text" id="nFirst" placeholder="First name" style="flex:1;min-width:140px"><input type="text" id="nLast" placeholder="Last name" style="flex:1;min-width:140px"></div>
+<input type="text" id="nMobile" placeholder="Mobile number" inputmode="tel"><input type="text" id="nEmail" placeholder="Email" inputmode="email"><input type="text" id="nPass" placeholder="Password (leave empty to auto-create)">
+<div class="nav" style="margin-top:6px"><span id="nMsg" class="sub"></span><button class="btn" id="nAdd">Create user</button></div></div><div id="admBody"></div>
+<div class="card"><b>Email OTP (forgot password)</b><div class="sub" style="margin:4px 0 8px">Sends the OTP to the student's email using a free EmailJS account (emailjs.com): add an email service, make a template that uses {{to_email}}, {{to_name}} and {{otp}}, then paste the Service ID, Template ID and Public Key here.</div>
+<input type="text" id="ejS" placeholder="Service ID"><input type="text" id="ejT" placeholder="Template ID"><input type="text" id="ejK" placeholder="Public Key">
+<div class="nav" style="margin-top:6px"><span id="ejMsg" class="sub"></span><span><button class="btn ghost" id="ejTest">Send test to me</button> <button class="btn" id="ejSave">Save</button></span></div></div>
+<div class="card"><b>Manage tests</b><div class="sub" style="margin:4px 0">Remove hides a test from all students (you can restore it). Custom quizzes are deleted permanently.</div><div id="qbExisting"></div></div>
+<div class="card"><b>Create / upload a quiz</b><div class="sub" style="margin:4px 0 8px">One question per line: <b>question, A, B, C, D, answer</b> (answer = A, B, C or D). Works with CSV, Excel copy-paste, or JSON. You can type Tamil directly.</div>
+<input type="text" id="qbName" placeholder="Quiz name"><input type="file" id="qbFile" accept=".csv,.txt,.tsv,.json" style="margin:6px 0"><textarea id="qbText" rows="5" placeholder="Paste questions here…"></textarea>
+<div class="row"><button class="btn ghost" id="qbParse">Add these questions</button><button class="btn ghost" id="qbClear">Clear list</button></div>
+<details style="margin:10px 0"><summary>Or add one question by hand</summary><input type="text" id="mq" placeholder="Question"><input type="text" id="mA" placeholder="Option A"><input type="text" id="mB" placeholder="Option B"><input type="text" id="mC" placeholder="Option C"><input type="text" id="mD" placeholder="Option D"><select id="mcor"><option>A</option><option>B</option><option>C</option><option>D</option></select> <button class="btn ghost" id="qbOne" style="margin-top:8px">Add question</button></details>
+<div class="sub" id="qbList"></div><div class="nav"><span class="sub" id="qbMsg"></span><button class="btn" id="qbSave">Save quiz</button></div></div></div>
+</div><script src="data.js"></script><script src="app.js"></script></body></html>
